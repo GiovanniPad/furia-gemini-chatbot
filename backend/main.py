@@ -1,11 +1,22 @@
 import os
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
+from fastapi.middleware.cors import CORSMiddleware
 from google.genai import Client
 
 app = FastAPI()
-client = Client(api_key=os.getenv("GEMINI_API_KEY")[:5])
+client = Client(api_key=os.getenv("GEMINI_API_KEY"))
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:8000",
+        "https://furia-gemini-chatbot.onrender.com"
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Rota da API para conversar com o Gemini
 @app.get("/chat")

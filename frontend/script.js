@@ -9,7 +9,7 @@ async function sendMessage() {
   input.value = '';
 
   try {
-    const res = await fetch('https://furia-backend.onrender.com/chat?query=' + encodeURIComponent(userMessage));
+    const res = await fetch('https://furia-gemini-chatbot.onrender.com/chat?query=' + encodeURIComponent(userMessage));
     const data = await res.json();
 
     // Converte markdown para HTML com marked
