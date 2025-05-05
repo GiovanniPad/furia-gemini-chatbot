@@ -34,3 +34,15 @@ A partir disso é possível executar e testar o projeto utilizando:
 ```bash
 uv run uvicorn backend.main:app
 ```
+
+Por fim, basta criar um arquivo `.env` e colocar a `GEMINI_API_KEY` dentro dele.
+
+## Deployment
+
+Para realizar o deploy desta aplicação foi utilizado o Render e como ele não possui um suporte nativo ao uv utilizado para gerenciar as dependências e o projeto, é necessário realizar o lock do `pyproject.toml` para `requirements.txt`, para isso utiliza-se o comando a seguir, dentro da pasta raiz:
+
+```bash
+uv pip compile pyproject.toml -o requirements.txt
+```
+
+O restante da configuração basta seguir o passo a passo imposto pelo Render, que tudo vai dar certo!

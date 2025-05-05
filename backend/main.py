@@ -4,6 +4,10 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from google.genai import Client
 
+if os.getenv("RENDER") is None:
+    from dotenv import load_dotenv
+    load_dotenv()
+
 app = FastAPI()
 client = Client(api_key=os.getenv("GEMINI_API_KEY"))
 
